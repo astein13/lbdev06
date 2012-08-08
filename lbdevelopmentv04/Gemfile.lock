@@ -200,7 +200,6 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 3.2.1)
   dragonfly (~> 0.9.12)
-  eventmachine (= 1.0.0.rc.4)
   factory_girl_rails (= 1.0)
   formtastic
   heroku
