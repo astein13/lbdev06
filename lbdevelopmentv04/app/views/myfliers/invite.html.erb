@@ -1,0 +1,13 @@
+<h2>Invite friends to <%= Flier.find_by_id(@flier).title %></h2>
+<%= form_tag :action => 'send_invite'%>
+<% @friends.each do |friend| %>
+  <% if @matching_friend = User.find_by_fbid(friend["id"]) %>
+   <%= image_tag @matching_friend.image_url %>
+   <%= check_box_tag("invitee_ids[]", @matching_friend.id) %>
+  <%= label_tag(@matching_friend.id, @matching_friend.fname+" "+@matching_friend.lname) %>
+<br/>
+  <% end %>
+<% end %>
+<%= hidden_field_tag("flier_id", @flier) %>
+
+<%= submit_tag "Send" %>

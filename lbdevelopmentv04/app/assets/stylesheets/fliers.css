@@ -1,0 +1,38 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+/* Show Fliers */
+
+.showimg {
+    position: relative;
+    margin-left: 5px;
+    height: 300px;
+    width: 900px;
+    padding: 5px;
+    outline: 1px #cacaca solid;
+}
+
+.newborder {
+    border: 1px solid #cacaca;
+    width: 920px;
+    padding:  10px;
+}
+
+
+/* Create Fliers */
+
+.flytit {
+    position: absolute;
+    width: 800px;
+}
+
+.flydesc {
+    width: 800px;
+    height: 200px;
+}
+
+.flytime {
+    width: 60px;
+}

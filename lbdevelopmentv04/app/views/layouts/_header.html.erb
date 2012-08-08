@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<header class="nav navbar-fixed-top">
+
+    <div class="headerbgs shadowhead">
+
+      <% if current_user %>
+
+
+      <div class="container channels">
+               <% @channels.each do |channel| %>
+
+               <%= link_to channel.channel,:controller => 'channels', :action=> 'index',
+                             :channel_id => channel.id %>
+               <% end %>
+
+        <div class="iconbar"></div>
+      </div>
+
+      <form class="container form-inline">
+                <ul class="nav">
+                    <li><input type="text" class="signin_email search" placeholder="Search...e.g. free food saturday night"></li>
+                </ul>
+      </form>
+
+      <% else %>
+      <% end %>
+    </div>
+
+    <nav>
+
+      <div class="container">
+
+        <div class="pull-right">
+
+           <ul class="nav nav-pills pull-right">
+                <% if current_user %>
+                <li><%=  link_to current_user.fname + " " + current_user.lname, myboard_path %></li>
+                <li> <%= link_to 'Create Flier', create_flier_path %></li>
+                <li> <%= link_to 'Sign Out', logout_path %> </li>
+                <li class="userimg"><%= image_tag current_user.image_url %></li>
+                <% else %>
+                <% end %>
+           </ul>
+
+
+
+        </div>
+
+            <% liveboardlogo = image_tag('header_logo.png') %>
+            <%= link_to liveboardlogo, liveboard_path, :class => 'lblogo'%>
+
+      </div>
+
+    </nav>
+
+</header>

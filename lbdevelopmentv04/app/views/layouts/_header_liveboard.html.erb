@@ -1,0 +1,47 @@
+
+
+
+<!--/* THIS PARTIAL FILE IS OLD AND SHOULD NOT BE USED FURTHER */-->
+<!--I'M SAVING IT SIMPLY BECAUSE IF I DELETE IT, THE FILE WILL-->
+<!--UNDOUBTEDLY BECOME EXTREMELY IMPORTANT NOT SOON AFTER-->
+
+
+<!DOCTYPE html>
+<header class="nav navbar-fixed-top">
+
+  <div class="headerbgs shadowhead"></div>
+
+    <nav>
+
+      <div class="container">
+
+        <div class="menu pull-right">
+
+           <ul class="nav nav-pills pull-right">
+             <% if current_user %>
+             <li><%=  link_to current_user.fname + " " + current_user.lname, myboard_path %></li>
+             <li> <%= link_to 'Create Flier', create_flier_path %></li>
+             <li> <%= link_to 'Sign Out', logout_path %> </li>
+             <li class="userimg"><%= image_tag current_user.image_url %></li>
+             <% else %>
+             <% end %>
+           </ul>
+
+           <div class="channels">
+               <% @channels.each do |channel| %>
+               <%= link_to channel.channel,:controller => 'channels', :action=> 'index',
+                             :channel_id => channel.id %>
+               <% end %>
+           </div>
+
+        </div>
+
+            <% liveboardlogo = image_tag('header_logo.png') %>
+            <%= link_to liveboardlogo, liveboard_path, :class => 'lblogo'%>
+
+
+      </div>
+
+    </nav>
+
+</header>
