@@ -11,9 +11,13 @@ class User < ActiveRecord::Base
            :include => :myfliers,
            :conditions => "privacy_status = 1"
 
-
+  
 
   has_many :fliers, :through => :myfliers
+
+  has_many :fliers_for_myboard, :through => :myfliers,
+           :source => :flier,
+           :conditions => "attending_status = 1" or "attending_status = 9"
 
   has_many :public_academics_fliers, :through => :myfliers,
            :class_name => "Flier",
@@ -34,8 +38,6 @@ class User < ActiveRecord::Base
            :class_name => "Flier",
            :source => :flier,
            :conditions => "channel_id = 4" and "privacy_status = 1"
-
-
 
   has_many :added_fliers, :through => :myfliers,
            :class_name =>"Flier",

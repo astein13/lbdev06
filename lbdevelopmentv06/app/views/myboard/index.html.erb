@@ -15,9 +15,9 @@
 
     <h1>My Board</h1>
     <% if session[:user_id] %>
-    <%= render 'user_liveboard' %>
+    <%= render 'user_myboard' %>
 <% if session[:organization_id] %>
-
+    <%= render 'org_myboard' %>
     <%=  render 'layouts/friends' %>
     <%= render 'layouts/footer' %>
 
