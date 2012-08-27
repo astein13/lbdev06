@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/header' %>
+  </head>
+  
+  <body>
+
+  <div class="container">
+
+        <br/><br/><br></br><br/><br/>
+
+    <h1>My Board</h1>
+    <% if session[:user_id] %>
+    <%= render 'user_liveboard' %>
+<% if session[:organization_id] %>
+
+    <%=  render 'layouts/friends' %>
+    <%= render 'layouts/footer' %>
+
+  </div>
+
+</body>
+<%end%>
+
+
+
+<%end%>
+</html>

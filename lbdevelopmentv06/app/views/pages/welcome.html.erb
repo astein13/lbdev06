@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <!DOCTYPE html>
+    <header class="nav navbar-fixed-top">
+
+        <div class="headerbgs shadowhead">
+
+          <% if current_user %>
+
+          <div class="container channels">
+                   <% @channels.each do |channel| %>
+
+                   <%= link_to channel.channel,:controller => 'channels', :action=> 'index',
+                                 :channel_id => channel.id %>
+                   <% end %>
+
+            <div class="iconbar"></div>
+          </div>
+
+          <% else %>
+          <% end %>
+
+        </div>
+
+        <nav>
+
+          <div class="container">
+
+            <div class="pull-right">
+
+               <ul class="nav nav-pills pull-right">
+                    <% if current_user %>
+                    <li><%=  link_to current_user.fname + " " + current_user.lname, myboard_path %></li>
+                    <li> <%= link_to 'Create Flier', create_flier_path %></li>
+                    <li> <%= link_to 'Sign Out', logout_path %> </li>
+                    <li class="userimg"><%= image_tag current_user.image_url %></li>
+                    <% else %>
+                    <% end %>
+               </ul>
+
+            </div>
+
+                <% liveboardlogo = image_tag('header_logo.png') %>
+                <%= link_to liveboardlogo, liveboard_path, :class => 'lblogo'%>
+
+          </div>
+
+        </nav>
+
+    </header>
+  </head>
+
+  <div id="body">
+
+      <div class="container">
+
+        <br/><br/><br/><br/>
+
+        <h1> Welcome to the Liveboard.</h1>
+
+        <br/><br/><br/>
+
+        <div class="logintit"></div>
+
+        <div id="loginitems">
+            <div class="signin">
+                    <div class="fbdesc">Are you an individual?</div>
+                    <a href="../auth/facebook" class="fbbtn"></a>
+            </div>
+
+            <div class="orgsignin">
+                <div class="fbdesc">Are you an organization?</div>
+                <%= render :partial => "organizations/login", class: "orgform"  %>
+            </div>
+        </div>
+
+        <div id="loginextra">
+            <%= image_tag 'flier_logo.png', class: "flierlogo" %>
+
+            <div class="logindesc">
+                <div class="desc">Easily discover what's going on around campus and your community.  Don't live bored.</div>
+            </div>
+        </div>
+
+      </div>
+  </div>
+
+  <br/><br/><br/><br/>
+
+  <div id="footer"><%= render 'layouts/footer' %></div>
+</html>
